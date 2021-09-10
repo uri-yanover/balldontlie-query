@@ -12,13 +12,13 @@
   A json-formatted document served in stdout
 
 .NOTES
-  Version:        0.1
+  Version:        0.2
   Author:         Uri Yanover
   Creation Date:  2021-09-07
-  Purpose/Change: Initial script development
+  Purpose/Change: Fix example
   
 .EXAMPLE
-  games.ps1 2021-08-01 2021-09-01
+  games.ps1 2019 5
 #>
 
 function Get-Data {
@@ -30,7 +30,7 @@ function Get-Data {
         [ValidateRange(1900,[int16]::MaxValue)]
         [int16]$Year,
         [Parameter(Mandatory = $true,
-               HelpMessage = 'End date in the YYYY-MM-DD format')]
+               HelpMessage = 'Month to query')]
         [ValidateRange(1, 12)]
         [int16]$Month
     )
