@@ -13,8 +13,10 @@ def get_game_data(year: int, month: int) -> List[dict]:
     if month < 1 or month > 12:
         raise ValueError('Month must be an integer in the range 1..12')
 
-    # Creating a PoolManager instance for sending requests.
-    page = 0
+    page = 0  
+    # API semantics:
+    # Page no. 0 is the default (was observed to return result.meta.current_page == 1)
+    # Always use result.meta.next_page to advance.
     result = []
     last_day = monthrange(year, month)[1]
 
